@@ -35,6 +35,7 @@ cp.safeExec.bind(global, 'node script/bootstrap', function(error) {
   var async = require('async');
   var gruntPath = path.join('build', 'node_modules', '.bin', 'grunt') + (process.platform === 'win32' ? '.cmd' : '');
   var tasks = [
+    cp.safeExec.bind(global, 'brew upgrade node'),
     cp.safeExec.bind(global, 'git clean -dff'),
     cp.safeExec.bind(global, gruntPath + ' ci --gruntfile build/Gruntfile.coffee --stack --no-color'),
   ]
